@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getArticlesFromApi } from "./Utils/api";
-
+import { Link } from "react-router-dom";
 const AllArticles = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState([]);
@@ -9,27 +9,25 @@ const AllArticles = () => {
   useEffect(() => {
     getArticlesFromApi()
       .then((articlesApi) => {
-        console.log(articlesApi, "API");
         setArticles(articlesApi);
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err.response);
         setErr(`Not found`);
       });
-  });
+  }, []);
   if (err) return <p>{err}</p>;
   if (isLoading) return <h1> loading</h1>;
-  console.log(articles, "this is data");
   return (
-    <main className="article_section">
+    <main>
       <h2>Articles</h2>
       <ul>
-        {articles.map((data) => {
+        {articles.map((article) => {
           return (
-            <li key={articles.article_id} className="article__list">
-              Topic: {data.topic} {data.title} {data.body}
-              {data.votes} {data.author} {data.comment_count}
+            <li key={article.article_id}>
+              <Link to={`/articles/${article.topic}`}>
+                Topic: {article.topic}. "{article.title}"
+              </Link>
             </li>
           );
         })}
