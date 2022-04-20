@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const articlesApi = axios.create({
-  baseURL: `https://enigmatic-tor-40960.herokuapp.com/api/`,
+  baseURL: `https://enigmatic-tor-40960.herokuapp.com/api`,
 });
 
 export const getArticlesFromApi = (topic_slug, article_id) => {
