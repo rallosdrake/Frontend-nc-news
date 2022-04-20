@@ -9,6 +9,7 @@ function App() {
     <div className="box">
       <div className="App">
         <Nav />
+
         <Routes>
           <Route path="/articles" element={<AllArticles />} />
           <Route path="/articles/:topic_slug" element={<ArticleByTopic />} />

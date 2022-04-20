@@ -9,7 +9,9 @@ export const SingleArticle = () => {
   useEffect(() => {
     getArticlesFromApi(article_id)
       .then((articlesApi) => {
-        setArticle(articlesApi);
+        setArticle(articlesApi.data.article).then(
+          console.log(articlesApi.data.article)
+        );
       })
       .catch((err) => {
         setErr(`Not found`);
@@ -18,10 +20,10 @@ export const SingleArticle = () => {
   if (err) return <p>{err}</p>;
 
   return (
-    <section>
+    <>
       <h2 className="indie__art__card">{article.title}</h2>;
       <p>{article.body}</p>
-    </section>
+    </>
   );
 };
 
