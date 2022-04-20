@@ -25,10 +25,11 @@ const ArticleByTopic = (AllArticles) => {
       {articles
         .filter((article) => article.topic === topic_slug)
         .map((filteredPerson) => (
-          <li>
+          <li key={filteredPerson.article_id}>
             <b>{filteredPerson.title}</b>
-            <p>{filteredPerson.body}</p> {filteredPerson.topic},
-            <b>{filteredPerson.author}</b>
+            <p>{filteredPerson.body}</p>
+            <p>Topic: {filteredPerson.topic}</p>
+            <b>Author: {filteredPerson.author}</b>
           </li>
         ))}
     </div>

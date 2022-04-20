@@ -21,12 +21,13 @@ const AllArticles = () => {
   return (
     <main>
       <h2>Articles</h2>
-      <ul>
+      <ul className="allarticle__list">
         {articles.map((article) => {
           return (
             <li key={article.article_id}>
+              "{article.title}"
               <Link to={`/articles/${article.topic}`}>
-                Topic: {article.topic}. "{article.title}"
+                <p> Topic: {article.topic}.</p>
               </Link>
             </li>
           );

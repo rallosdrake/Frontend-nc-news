@@ -6,7 +6,7 @@ const Nav = () => {
       <main className="Nav">
         <div className="Topic drop down">
           <form>
-            <label for="topics">
+            <label htmlFor="topics">
               Choose a topic to view all associated articles:
             </label>
             <select name="topics" id="topics">

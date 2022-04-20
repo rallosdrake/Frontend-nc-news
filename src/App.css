@@ -1,17 +1,26 @@
-.App {
-  text-align: center;
+.allarticle__list {
+  list-style: none;
 }
-.Header {
-  border: 1px solid black;
-}
-.Nav {
-  border: 1px solid black;
-}
-.article_section {
-  border: 1px solid black;
-}
-.article__list {
-  margin-bottom: 50px;
-  margin-right: 50px;
-  margin-left: 50px;
+@media only screen and (max-width: 786px) {
+  .box {
+    height: 100%;
+    background: linear-gradient(#f7971b 25%, white 75%);
+  }
+  .App {
+    text-align: center;
+  }
+  .Header {
+    border: 1px solid black;
+  }
+  .Nav {
+    border: 1px solid black;
+  }
+  .article_section {
+    border: 1px solid black;
+  }
+  .article__list {
+    margin-bottom: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+  }
 }

@@ -6,17 +6,15 @@ import ArticleByTopic from "./Components/ArticleByTopic";
 import AllArticles from "./Components/AllArticles";
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Nav />
-      <Routes>
-        <Route
-          path="/articles"
-          element={<AllArticles />}
-          AllArticles={AllArticles}
-        />
-        <Route path="/articles/:topic_slug" element={<ArticleByTopic />} />
-      </Routes>
+    <div className="box">
+      <div className="App">
+        <Header />
+        <Nav />
+        <Routes>
+          <Route path="/articles" element={<AllArticles />} />
+          <Route path="/articles/:topic_slug" element={<ArticleByTopic />} />
+        </Routes>
+      </div>
     </div>
   );
 }
