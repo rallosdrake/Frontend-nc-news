@@ -1,6 +1,21 @@
 .allarticle__list {
   list-style: none;
 }
+
+.article__card {
+  border: 1px solid black;
+}
+
+.topic__card {
+  border: 1px solid black;
+}
+.buttons {
+  display: inline-block;
+}
+#inner {
+  width: 100%;
+  text-align: center;
+}
 @media only screen and (max-width: 786px) {
   .box {
     height: 100%;

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getArticlesFromApi } from "./Utils/api";
 
-const ArticleByTopic = (AllArticles) => {
+const ArticleByTopic = () => {
   const [articles, setArticles] = useState([]);
   const { topic_slug } = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -25,7 +25,7 @@ const ArticleByTopic = (AllArticles) => {
       {articles
         .filter((article) => article.topic === topic_slug)
         .map((filteredPerson) => (
-          <li key={filteredPerson.article_id}>
+          <li key={filteredPerson.article_id} className="topic__card">
             <b>{filteredPerson.title}</b>
             <p>{filteredPerson.body}</p>
             <p>Topic: {filteredPerson.topic}</p>
