@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getArticlesFromApi } from "./Utils/api";
 import { Link } from "react-router-dom";
+import { SingleArticle } from "../Components/SingleArticle";
 const AllArticles = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState([]);
@@ -28,6 +29,11 @@ const AllArticles = () => {
               "{article.title}"
               <Link to={`/articles/${article.topic}`}>
                 <p> Topic: {article.topic}.</p>
+              </Link>
+              <Link to={`/articles/${article.article_id}`}>
+                <button type="button" className="Read__Article">
+                  Read Article
+                </button>
               </Link>
             </li>
           );

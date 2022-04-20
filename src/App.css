@@ -9,14 +9,15 @@
 .topic__card {
   border: 1px solid black;
 }
-.buttons {
-  display: inline-block;
-}
-#inner {
-  width: 100%;
-  text-align: center;
-}
+
 @media only screen and (max-width: 786px) {
+  .buttons {
+    display: inline-block;
+  }
+  #inner {
+    width: 100%;
+    text-align: center;
+  }
   .box {
     height: 100%;
     background: linear-gradient(#f7971b 25%, white 75%);
