@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <>
@@ -26,6 +26,15 @@ const Nav = () => {
             <h2>View Comments</h2>
           </button>
         </div>
+        <Link to="/articles">
+          <button
+            type="button"
+            className="allarticles"
+            onSubmit={console.log("button clicked")}
+          >
+            <h2>View All Articles</h2>
+          </button>
+        </Link>
       </main>
     </>
   );

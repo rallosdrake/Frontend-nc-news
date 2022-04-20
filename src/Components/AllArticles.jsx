@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getArticlesFromApi } from "./Utils/api";
 
-const GetAllArticles = () => {
+const AllArticles = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState([]);
   const [err, setErr] = useState(null);
@@ -38,4 +38,4 @@ const GetAllArticles = () => {
   );
 };
 
-export default GetAllArticles;
+export default AllArticles;
