@@ -10,7 +10,6 @@ export const DisplayComments = () => {
     getComments(article_id)
       .then((comments) => {
         setComments(comments);
-        console.log(comments, " comments");
       })
       .catch((err) => {
         return <p>{err.response}</p>;

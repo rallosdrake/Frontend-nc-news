@@ -35,7 +35,6 @@ export const SingleArticle = () => {
     setErr(null);
     increaseVotes(article_id, increment)
       .then((res) => {
-        console.log({ res });
         setVotes(res.votes);
       })
       .catch((err) => {
