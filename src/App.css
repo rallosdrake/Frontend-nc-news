@@ -9,14 +9,18 @@
 .topic__card {
   border: 1px solid black;
 }
-.buttons {
-  display: inline-block;
+.article__card {
+  flex-wrap: wrap;
 }
-#inner {
-  width: 100%;
-  text-align: center;
-}
+
 @media only screen and (max-width: 786px) {
+  .buttons {
+    display: inline-block;
+  }
+  #inner {
+    width: 100%;
+    text-align: center;
+  }
   .box {
     height: 100%;
     background: linear-gradient(#f7971b 25%, white 75%);
@@ -37,5 +41,9 @@
     margin-bottom: 50px;
     margin-right: 50px;
     margin-left: 50px;
+  }
+  .article__card {
+    width: auto;
+    flex-wrap: wrap;
   }
 }
