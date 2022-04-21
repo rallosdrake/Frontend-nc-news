@@ -30,7 +30,7 @@ const AllArticles = () => {
               <Link to={`/articles/${article.topic}`}>
                 <p> Topic: {article.topic}.</p>
               </Link>
-              <Link to={`/articles/${article.article_id}`}>
+              <Link to={`/article/${article.article_id}`}>
                 <button type="button" className="Read__Article">
                   Read Article
                 </button>
