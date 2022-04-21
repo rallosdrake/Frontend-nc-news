@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getArticlesFromApi } from "./Utils/api";
 import { Link } from "react-router-dom";
+
 import { SingleArticle } from "../Components/SingleArticle";
 const AllArticles = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,6 +36,7 @@ const AllArticles = () => {
                   Read Article
                 </button>
               </Link>
+              Comments: {article.comment_count}
             </li>
           );
         })}

@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { getSingleArticleFromApi } from "./Utils/api";
 import { useParams } from "react-router-dom";
 import { increaseVotes } from "./Utils/api";
+import DisplayComments from "./DisplayComments";
+import { Link } from "react-router-dom";
+
 export const SingleArticle = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
@@ -9,6 +12,7 @@ export const SingleArticle = () => {
   const [err, setErr] = useState(null);
   const [votes, setVotes] = useState(article.votes);
   const [clicked, setClicked] = useState(false);
+  const [selectedArticle, setSelectedArticle] = useState({});
 
   useEffect(() => {
     if (!article_id) return;
@@ -52,7 +56,6 @@ export const SingleArticle = () => {
     setErr(null);
     increaseVotes(article_id, increment)
       .then((res) => {
-        console.log({ res });
         setVotes(res.votes);
       })
       .catch((err) => {
@@ -74,6 +77,7 @@ export const SingleArticle = () => {
       <p>{article.body}</p>
       <p>Article author: {article.author}</p>
       <p>Votes: {article.votes}</p>
+
       <button
         className="upvote__Button"
         onClick={(e) => {
@@ -90,6 +94,7 @@ export const SingleArticle = () => {
       >
         💔
       </button>
+      <DisplayComments />
     </div>
   );
 };
