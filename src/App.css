@@ -12,7 +12,16 @@
 .article__card {
   flex-wrap: wrap;
 }
-
+.upvote__Button {
+  width: 25em;
+}
+.downvote__Button {
+  width: 25em;
+}
+.box {
+  height: 100%;
+  background: linear-gradient(#f7971b 25%, white 75%);
+}
 @media only screen and (max-width: 786px) {
   .buttons {
     display: inline-block;
@@ -45,5 +54,11 @@
   .article__card {
     width: auto;
     flex-wrap: wrap;
+  }
+  .upvote__Button {
+    width: 25em;
+  }
+  .downvote__Button {
+    width: 25em;
   }
 }

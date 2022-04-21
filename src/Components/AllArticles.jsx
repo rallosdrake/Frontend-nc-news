@@ -18,7 +18,7 @@ const AllArticles = () => {
       });
   }, []);
   if (err) return <p>{err}</p>;
-  if (isLoading) return <h1> loading</h1>;
+  if (isLoading) return <h1> Loading...</h1>;
   return (
     <main>
       <h2>Articles</h2>

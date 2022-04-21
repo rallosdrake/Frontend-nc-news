@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { getSingleArticleFromApi } from "./Utils/api";
 import { useParams } from "react-router-dom";
-import ArticleByTopic from "./ArticleByTopic";
-
+import { increaseVotes } from "./Utils/api";
 export const SingleArticle = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
-  console.log(useParams(), "this is article id");
   const [article, setArticle] = useState({});
   const [err, setErr] = useState(null);
+  const [votes, setVotes] = useState(article.votes);
+  const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
     if (!article_id) return;
@@ -21,15 +21,75 @@ export const SingleArticle = () => {
       .catch((err) => {
         setErr(`Not found`);
       });
-  }, [article_id]);
+  }, [votes]);
+
+  const UpvoteHandler = (e, increment) => {
+    setArticle((currArticle) => {
+      return { ...currArticle, votes: currArticle.votes + 1 };
+    });
+    setClicked(true);
+    setErr(null);
+    increaseVotes(article_id, increment)
+      .then((res) => {
+        console.log({ res });
+        setVotes(res.votes);
+      })
+      .catch((err) => {
+        setArticle((currArticle) => {
+          return { ...currArticle, votes: currArticle.votes - 1 };
+        });
+        setErr("Something went wrong, please try again.");
+        setClicked(false);
+        console.log(err.response);
+      });
+  };
+
+  const DownvoteHandler = (e, increment) => {
+    setArticle((currArticle) => {
+      return { ...currArticle, votes: currArticle.votes - 1 };
+    });
+    setClicked(true);
+    setErr(null);
+    increaseVotes(article_id, increment)
+      .then((res) => {
+        console.log({ res });
+        setVotes(res.votes);
+      })
+      .catch((err) => {
+        setArticle((currArticle) => {
+          return { ...currArticle, votes: currArticle.votes + 1 };
+        });
+        setErr("Something went wrong, please try again.");
+        setClicked(false);
+        console.log(err.response);
+      });
+  };
+
   if (!isLoading && !article) return <p>"Error404"</p>;
   if (err) return <p>{err}</p>;
-  if (isLoading) return <h1> Loading</h1>;
+  if (isLoading) return <h1> Loading...</h1>;
   return (
     <div className="articleBody">
       <h2>{article.title}</h2>
       <p>{article.body}</p>
-      <p>{article.author}</p>
+      <p>Article author: {article.author}</p>
+      <p>Votes: {article.votes}</p>
+      <button
+        className="upvote__Button"
+        onClick={(e) => {
+          UpvoteHandler(e, 1);
+        }}
+      >
+        ❤️
+      </button>
+      <button
+        className="downvote__Button"
+        onClick={(e) => {
+          DownvoteHandler(e, -1);
+        }}
+      >
+        💔
+      </button>
     </div>
   );
 };
