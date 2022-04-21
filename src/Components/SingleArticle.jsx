@@ -23,10 +23,12 @@ export const SingleArticle = () => {
       });
   }, [votes]);
 
-  const ClickHandler = (article_id, increment) => {
+  const UpvoteHandler = (e, increment) => {
     setArticle((currArticle) => {
       return { ...currArticle, votes: currArticle.votes + 1 };
     });
+    setClicked(true);
+    setErr(null);
     increaseVotes(article_id, increment)
       .then((res) => {
         console.log({ res });
@@ -35,6 +37,27 @@ export const SingleArticle = () => {
       .catch((err) => {
         setArticle((currArticle) => {
           return { ...currArticle, votes: currArticle.votes - 1 };
+        });
+        setErr("Something went wrong, please try again.");
+        setClicked(false);
+        console.log(err.response);
+      });
+  };
+
+  const DownvoteHandler = (e, increment) => {
+    setArticle((currArticle) => {
+      return { ...currArticle, votes: currArticle.votes - 1 };
+    });
+    setClicked(true);
+    setErr(null);
+    increaseVotes(article_id, increment)
+      .then((res) => {
+        console.log({ res });
+        setVotes(res.votes);
+      })
+      .catch((err) => {
+        setArticle((currArticle) => {
+          return { ...currArticle, votes: currArticle.votes + 1 };
         });
         setErr("Something went wrong, please try again.");
         setClicked(false);
@@ -54,7 +77,7 @@ export const SingleArticle = () => {
       <button
         className="upvote__Button"
         onClick={(e) => {
-          ClickHandler(e, 1);
+          UpvoteHandler(e, 1);
         }}
       >
         ❤️
@@ -62,7 +85,7 @@ export const SingleArticle = () => {
       <button
         className="downvote__Button"
         onClick={(e) => {
-          ClickHandler(e, -1);
+          DownvoteHandler(e, -1);
         }}
       >
         💔
