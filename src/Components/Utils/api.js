@@ -4,11 +4,11 @@ const articlesApi = axios.create({
   baseURL: `https://enigmatic-tor-40960.herokuapp.com/api`,
 });
 
-export const getArticlesFromApi = async (topic_slug) => {
+export const getArticlesFromApi = async (topic_slug, p) => {
   const { data } = await articlesApi.get(`/articles`, {
     params: {
       topic_slug,
-      limit: 30,
+      p,
     },
   });
   return data.articles;
