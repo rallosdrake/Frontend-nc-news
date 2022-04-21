@@ -3,15 +3,6 @@ import { getSingleArticleFromApi } from "./Utils/api";
 import { useParams } from "react-router-dom";
 import { increaseVotes } from "./Utils/api";
 export const SingleArticle = () => {
-  const clickHandler = (e, increment) => {
-    setVotes(async () => {
-      const res = await increaseVotes(article_id, increment);
-      console.log(increment);
-      const newVotes = res.votes;
-      return newVotes;
-    });
-  };
-
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
@@ -32,6 +23,25 @@ export const SingleArticle = () => {
       });
   }, [votes]);
 
+  const ClickHandler = (article_id, increment) => {
+    setArticle((currArticle) => {
+      return { ...currArticle, votes: currArticle.votes + 1 };
+    });
+    increaseVotes(article_id, increment)
+      .then((res) => {
+        console.log({ res });
+        setVotes(res.data.votes);
+      })
+      .catch((err) => {
+        setArticle((currArticle) => {
+          return { ...currArticle, votes: currArticle.votes - 1 };
+        });
+        setErr("Something went wrong, please try again.");
+        setClicked(false);
+        console.log(err.response);
+      });
+  };
+
   if (!isLoading && !article) return <p>"Error404"</p>;
   if (err) return <p>{err}</p>;
   if (isLoading) return <h1> Loading...</h1>;
@@ -44,7 +54,7 @@ export const SingleArticle = () => {
       <button
         className="upvote__Button"
         onClick={(e) => {
-          clickHandler(e, 1);
+          ClickHandler(e, 1);
         }}
       >
         ❤️
@@ -52,7 +62,7 @@ export const SingleArticle = () => {
       <button
         className="downvote__Button"
         onClick={(e) => {
-          clickHandler(e, -1);
+          ClickHandler(e, -1);
         }}
       >
         💔
