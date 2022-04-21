@@ -16,7 +16,13 @@ export const getArticlesFromApi = async (topic_slug) => {
 
 export const getSingleArticleFromApi = async (article_id) => {
   const { data } = await articlesApi.get(`/articles/${article_id}`);
-  console.log({ data }, "this is data");
 
   return data.article;
+};
+
+export const increaseVotes = async (article_id, increment) => {
+  const { data } = await articlesApi.patch(`/articles/${article_id}`, {
+    inc_votes: increment,
+  });
+  return data;
 };

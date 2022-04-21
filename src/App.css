@@ -12,7 +12,12 @@
 .article__card {
   flex-wrap: wrap;
 }
-
+.upvote__Button {
+  width: 25em;
+}
+.downvote__Button {
+  width: 25em;
+}
 @media only screen and (max-width: 786px) {
   .buttons {
     display: inline-block;
@@ -45,5 +50,11 @@
   .article__card {
     width: auto;
     flex-wrap: wrap;
+  }
+  .upvote__Button {
+    width: 25em;
+  }
+  .downvote__Button {
+    width: 25em;
   }
 }

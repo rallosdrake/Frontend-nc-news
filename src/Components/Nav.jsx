@@ -11,7 +11,7 @@ const Nav = () => {
       <Header />
       <TopicButtons />
       <ViewArticles />
-      <ViewComments />
+      {/* <ViewComments /> */}
     </>
   );
 };
