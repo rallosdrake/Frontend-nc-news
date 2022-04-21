@@ -34,7 +34,7 @@ export const SingleArticle = () => {
 
   if (!isLoading && !article) return <p>"Error404"</p>;
   if (err) return <p>{err}</p>;
-  if (isLoading) return <h1> Loading</h1>;
+  if (isLoading) return <h1> Loading...</h1>;
   return (
     <div className="articleBody">
       <h2>{article.title}</h2>
