@@ -9,6 +9,9 @@
 .topic__card {
   border: 1px solid black;
 }
+.article__card {
+  flex-wrap: wrap;
+}
 
 @media only screen and (max-width: 786px) {
   .buttons {
@@ -38,5 +41,9 @@
     margin-bottom: 50px;
     margin-right: 50px;
     margin-left: 50px;
+  }
+  .article__card {
+    width: auto;
+    flex-wrap: wrap;
   }
 }

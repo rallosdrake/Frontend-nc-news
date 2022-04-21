@@ -27,7 +27,7 @@ const AllArticles = () => {
           return (
             <li key={article.article_id} className="article__card">
               "{article.title}"
-              <Link to={`/articles/${article.topic}`}>
+              <Link to={`/${article.topic}`}>
                 <p> Topic: {article.topic}.</p>
               </Link>
               <Link to={`/article/${article.article_id}`}>
