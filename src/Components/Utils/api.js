@@ -20,9 +20,10 @@ export const getSingleArticleFromApi = async (article_id) => {
   return data.article;
 };
 
-export const increaseVotes = async (article_id, increment) => {
-  const { data } = await articlesApi.patch(`/articles/${article_id}`, {
-    inc_votes: increment,
-  });
-  return data;
+export const increaseVotes = (article_id, increment) => {
+  return articlesApi
+    .patch(`/articles/${article_id}`, { inc_votes: increment })
+    .then(({ data }) => {
+      return data;
+    });
 };

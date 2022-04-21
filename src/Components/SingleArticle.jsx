@@ -30,7 +30,7 @@ export const SingleArticle = () => {
     increaseVotes(article_id, increment)
       .then((res) => {
         console.log({ res });
-        setVotes(res.data.votes);
+        setVotes(res.votes);
       })
       .catch((err) => {
         setArticle((currArticle) => {
