@@ -8,11 +8,7 @@ const ViewArticles = () => {
         <div className="Topic drop down"></div>
         <label htmlFor="articles"></label>
         <Link to="/articles">
-          <button
-            type="button"
-            className="allarticles"
-            onClick={() => console.log("art button clicked")}
-          >
+          <button type="button" className="allarticles">
             <h2>View All Articles</h2>
           </button>
         </Link>
