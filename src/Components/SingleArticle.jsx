@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { increaseVotes } from "./Utils/api";
 import DisplayComments from "./DisplayComments";
 import { Link } from "react-router-dom";
-
+import { WriteComment } from "./WriteComment";
 export const SingleArticle = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
@@ -12,7 +12,6 @@ export const SingleArticle = () => {
   const [err, setErr] = useState(null);
   const [votes, setVotes] = useState(article.votes);
   const [clicked, setClicked] = useState(false);
-  const [selectedArticle, setSelectedArticle] = useState({});
 
   useEffect(() => {
     if (!article_id) return;
@@ -93,6 +92,7 @@ export const SingleArticle = () => {
       >
         💔
       </button>
+      <WriteComment />
       <DisplayComments />
     </div>
   );

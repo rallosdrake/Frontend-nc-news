@@ -38,3 +38,15 @@ export const getComments = (article_id) => {
       return data.comments;
     });
 };
+
+export const postComment = (article_id, username, comment) => {
+  return articlesApi
+    .post(`/articles/${article_id}/comments`, {
+      username: username,
+      body: comment,
+    })
+    .then(({ data }) => {
+      console.log(data, "this is data");
+      return data;
+    });
+};
