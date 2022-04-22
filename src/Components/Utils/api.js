@@ -18,9 +18,7 @@ export const getArticlesFromApi = async (page, topic_slug, sort, order) => {
   if (!!topic_slug) {
     path += `&topic=${topic_slug}`;
   }
-  console.log(path, "this is path");
   const { data } = await articlesApi.get(path);
-  console.log({ data });
   return data.articles;
 };
 
@@ -52,10 +50,8 @@ export const postComment = async (article_id, username, body) => {
     username: username,
     body: body,
   });
-  console.log(data, "this is result");
   return data.comment;
 };
 export const deleteComment = async (article_id) => {
   await articlesApi.delete(`/comments/${article_id}`);
-  console.log("Comment has been deleted");
 };

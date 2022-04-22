@@ -3,8 +3,6 @@ import { getSingleArticleFromApi } from "./Utils/api";
 import { useParams } from "react-router-dom";
 import { increaseVotes } from "./Utils/api";
 import DisplayComments from "./DisplayComments";
-import { Link } from "react-router-dom";
-import WriteComment from "./WriteComment";
 
 export const SingleArticle = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,7 +23,7 @@ export const SingleArticle = () => {
       .catch((err) => {
         setErr(`Not found`);
       });
-  }, [votes]);
+  }, [votes, article_id]);
 
   const UpvoteHandler = (e, increment) => {
     setArticle((currArticle) => {

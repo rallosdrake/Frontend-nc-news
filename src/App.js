@@ -12,6 +12,10 @@ function App() {
       <div className="App">
         <Nav />
         <Routes>
+          <Route
+            path="/article/:article_id/comments/*"
+            element={<p>Sorry, this path does not exist</p>}
+          />
           <Route path="/articles" element={<AllArticles />} />
           <Route path="/:topic_slug" element={<ArticleByTopic />} />
           <Route path="/article/:article_id" element={<SingleArticle />} />
