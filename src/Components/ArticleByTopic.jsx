@@ -22,14 +22,16 @@ const ArticleByTopic = () => {
   if (isLoading) return <h1> Loading...</h1>;
   return (
     <div>
-      {articles.map((article) => (
-        <li key={article.article_id} className="topic__card">
-          <b>{article.title}</b>
-          <p>{article.body}</p>
-          <p>Topic: {article.topic}</p>
-          <b>Author: {article.author}</b>
-        </li>
-      ))}
+      {articles
+        .filter((article) => article.topic === topic_slug)
+        .map((article) => (
+          <li key={article.article_id} className="topic__card">
+            <b>{article.title}</b>
+            <p>{article.body}</p>
+            <p>Topic: {article.topic}</p>
+            <b>Author: {article.author}</b>
+          </li>
+        ))}
     </div>
   );
 };
