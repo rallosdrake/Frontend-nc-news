@@ -4,7 +4,7 @@ import ArticleByTopic from "./Components/ArticleByTopic";
 import AllArticles from "./Components/AllArticles";
 import SingleArticle from "./Components/SingleArticle";
 import Nav from "./Components/Nav";
-import DisplayComments from "./Components/DisplayComments";
+import WriteComment from "./Components/WriteComment";
 
 function App() {
   return (
@@ -16,8 +16,8 @@ function App() {
           <Route path="/:topic_slug" element={<ArticleByTopic />} />
           <Route path="/article/:article_id" element={<SingleArticle />} />
           <Route
-            path="/article/:article_id/comments"
-            element={<DisplayComments />}
+            path="/articles/:article_id/comments"
+            element={<WriteComment />}
           />
         </Routes>
       </div>
