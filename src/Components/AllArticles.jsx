@@ -22,13 +22,11 @@ const AllArticles = () => {
   }, [page, sort, order]);
 
   const sortHandler = (e) => {
-    console.log(e.target.value);
     setSort(e.target.value);
   };
 
   const orderHandler = (e) => {
     setOrder(e.target.value);
-    console.log(e.target.value);
   };
 
   const nextPageHandler = () => {

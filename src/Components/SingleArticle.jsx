@@ -43,7 +43,7 @@ export const SingleArticle = () => {
         });
         setErr("Something went wrong, please try again.");
         setClicked(false);
-        console.log(err.response);
+        return <p> {err.response}</p>;
       });
   };
 
@@ -63,7 +63,7 @@ export const SingleArticle = () => {
         });
         setErr("Something went wrong, please try again.");
         setClicked(false);
-        console.log(err.response);
+        return <p> {err.response}</p>;
       });
   };
 

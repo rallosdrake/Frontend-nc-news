@@ -55,3 +55,7 @@ export const postComment = async (article_id, username, body) => {
   console.log(data, "this is result");
   return data.comment;
 };
+export const deleteComment = async (article_id) => {
+  await articlesApi.delete(`/comments/${article_id}`);
+  console.log("Comment has been deleted");
+};

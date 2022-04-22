@@ -12,7 +12,6 @@ const ArticleByTopic = () => {
     getArticlesFromApi(page, topic_slug)
       .then((articlesApi) => {
         setArticles(articlesApi);
-        console.log("in line 15");
         setIsLoading(false);
       })
       .catch((err) => {
