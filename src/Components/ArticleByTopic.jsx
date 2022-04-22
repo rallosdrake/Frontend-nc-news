@@ -7,7 +7,7 @@ const ArticleByTopic = () => {
   const { topic_slug } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [err, setErr] = useState(null);
-  const [page, setPage] = useState(0);
+  const [page] = useState(0);
   useEffect(() => {
     getArticlesFromApi(page, topic_slug)
       .then((articlesApi) => {

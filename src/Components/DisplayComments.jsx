@@ -5,7 +5,7 @@ import WriteComment from "./WriteComment";
 export const DisplayComments = () => {
   const [comments, setComments] = useState([]);
   const [deleteConfirmation, setDeleteConfirmation] = useState(false);
-  const [err, setErr] = useState(null);
+  const [err] = useState(null);
   const { article_id } = useParams();
 
   const clickHandler = (comment_id) => {

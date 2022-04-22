@@ -21,7 +21,7 @@ const AllArticles = () => {
           setErr(`Not found`);
         });
     },
-    [page, sort, order],
+    [page, sort, order, topic_slug],
     topic_slug
   );
 
