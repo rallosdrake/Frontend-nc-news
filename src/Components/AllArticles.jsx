@@ -98,8 +98,10 @@ const AllArticles = () => {
         })}
       </ul>
       <p>Current Page: {page + 1}</p>
-      <button onClick={previousPageHandler}>Previous Page</button>
-      <button onClick={nextPageHandler}>Next Page</button>
+      {page > 0 && <button onClick={previousPageHandler}>Previous Page</button>}
+      {articles.length === 10 && (
+        <button onClick={nextPageHandler}>Next Page</button>
+      )}
     </main>
   );
 };
