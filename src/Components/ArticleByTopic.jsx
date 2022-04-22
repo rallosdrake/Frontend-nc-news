@@ -12,6 +12,7 @@ const ArticleByTopic = () => {
     getArticlesFromApi(page, topic_slug)
       .then((articlesApi) => {
         setArticles(articlesApi);
+        console.log("in line 15");
         setIsLoading(false);
       })
       .catch((err) => {
@@ -22,16 +23,14 @@ const ArticleByTopic = () => {
   if (isLoading) return <h1> Loading...</h1>;
   return (
     <div>
-      {articles
-        .filter((article) => article.topic === topic_slug)
-        .map((article) => (
-          <li key={article.article_id} className="topic__card">
-            <b>{article.title}</b>
-            <p>{article.body}</p>
-            <p>Topic: {article.topic}</p>
-            <b>Author: {article.author}</b>
-          </li>
-        ))}
+      {articles.map((article) => (
+        <li key={article.article_id} className="topic__card">
+          <b>{article.title}</b>
+          <p>{article.body}</p>
+          <p>Topic: {article.topic}</p>
+          <b>Author: {article.author}</b>
+        </li>
+      ))}
     </div>
   );
 };

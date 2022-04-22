@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import { getArticlesFromApi } from "./Utils/api";
 import { Link } from "react-router-dom";
-import { SingleArticle } from "../Components/SingleArticle";
 import { useParams } from "react-router-dom";
 const AllArticles = () => {
+  const [sort, setSort] = useState("author");
   const [page, setPage] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState([]);
   const [err, setErr] = useState(null);
   let { topic_slug } = useParams();
-  console.log(topic_slug, "topic slug");
   useEffect(() => {
-    getArticlesFromApi(page, topic_slug)
+    getArticlesFromApi(page, topic_slug, sort)
       .then((articlesApi) => {
         setArticles(articlesApi);
         setIsLoading(false);
@@ -19,7 +18,12 @@ const AllArticles = () => {
       .catch((err) => {
         setErr(`Not found`);
       });
-  }, [page]);
+  }, [page, sort]);
+
+  const sortHandler = (e) => {
+    console.log(e.target.value);
+    setSort(e.target.value);
+  };
 
   const nextPageHandler = () => {
     setPage((currPage) => {
@@ -38,6 +42,23 @@ const AllArticles = () => {
   return (
     <main>
       <h2>Articles</h2>
+      <>
+        <label className="select" htmlFor="sort">
+          Sort by:
+        </label>
+        <select
+          className="select"
+          name="sort"
+          id="sort"
+          onChange={(e) => {
+            sortHandler(e);
+          }}
+        >
+          <option value="author">Author</option>
+          <option value="votes">Votes</option>
+          <option value="comment_count">Comment count</option>
+        </select>
+      </>
       <p>Current Page: {page + 1}</p>
       <button onClick={previousPageHandler}>Previous Page</button>
       <button onClick={nextPageHandler}>Next Page</button>
@@ -49,6 +70,7 @@ const AllArticles = () => {
               <Link to={`/${article.topic}`}>
                 <p> Topic: {article.topic}.</p>
               </Link>
+              <p> Author: {article.author}</p>
               <Link to={`/article/${article.article_id}`}>
                 <button type="button" className="Read__Article">
                   Read Article
@@ -59,6 +81,9 @@ const AllArticles = () => {
           );
         })}
       </ul>
+      <p>Current Page: {page + 1}</p>
+      <button onClick={previousPageHandler}>Previous Page</button>
+      <button onClick={nextPageHandler}>Next Page</button>
     </main>
   );
 };
