@@ -4,13 +4,16 @@ const articlesApi = axios.create({
   baseURL: `https://enigmatic-tor-40960.herokuapp.com/api`,
 });
 
-export const getArticlesFromApi = async (page, topic_slug, sort) => {
+export const getArticlesFromApi = async (page, topic_slug, sort, order) => {
   let path = `/articles`;
 
   path += `?page=${page}`;
 
   if (sort) {
     path += `&sort_by=${sort}`;
+  }
+  if (order) {
+    path += `&order=${order}`;
   }
   if (!!topic_slug) {
     path += `&topic=${topic_slug}`;

@@ -8,9 +8,10 @@ const AllArticles = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState([]);
   const [err, setErr] = useState(null);
+  const [order, setOrder] = useState("asc");
   let { topic_slug } = useParams();
   useEffect(() => {
-    getArticlesFromApi(page, topic_slug, sort)
+    getArticlesFromApi(page, topic_slug, sort, order)
       .then((articlesApi) => {
         setArticles(articlesApi);
         setIsLoading(false);
@@ -18,11 +19,16 @@ const AllArticles = () => {
       .catch((err) => {
         setErr(`Not found`);
       });
-  }, [page, sort]);
+  }, [page, sort, order]);
 
   const sortHandler = (e) => {
     console.log(e.target.value);
     setSort(e.target.value);
+  };
+
+  const orderHandler = (e) => {
+    setOrder(e.target.value);
+    console.log(e.target.value);
   };
 
   const nextPageHandler = () => {
@@ -58,10 +64,22 @@ const AllArticles = () => {
           <option value="votes">Votes</option>
           <option value="comment_count">Comment count</option>
         </select>
+        <label htmlFor="order"></label>
+        <select
+          className="select"
+          name="order"
+          id="order"
+          onChange={orderHandler}
+        >
+          <option value="asc">ascending</option>
+          <option value="desc">descending</option>
+        </select>
       </>
       <p>Current Page: {page + 1}</p>
-      <button onClick={previousPageHandler}>Previous Page</button>
-      <button onClick={nextPageHandler}>Next Page</button>
+      {page > 0 && <button onClick={previousPageHandler}>Previous Page</button>}
+      {articles.length === 10 && (
+        <button onClick={nextPageHandler}>Next Page</button>
+      )}
       <ul className="allarticle__list">
         {articles.map((article) => {
           return (
