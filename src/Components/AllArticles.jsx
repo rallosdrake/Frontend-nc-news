@@ -10,16 +10,20 @@ const AllArticles = () => {
   const [err, setErr] = useState(null);
   const [order, setOrder] = useState("asc");
   let { topic_slug } = useParams();
-  useEffect(() => {
-    getArticlesFromApi(page, topic_slug, sort, order)
-      .then((articlesApi) => {
-        setArticles(articlesApi);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        setErr(`Not found`);
-      });
-  }, [page, sort, order]);
+  useEffect(
+    () => {
+      getArticlesFromApi(page, topic_slug, sort, order)
+        .then((articlesApi) => {
+          setArticles(articlesApi);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          setErr(`Not found`);
+        });
+    },
+    [page, sort, order],
+    topic_slug
+  );
 
   const sortHandler = (e) => {
     setSort(e.target.value);

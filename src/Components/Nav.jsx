@@ -3,7 +3,6 @@ import React from "react";
 import Header from "./Header";
 import TopicButtons from "./Topicbuttons";
 import ViewArticles from "./ViewArticles";
-import ViewComments from "./ViewComments";
 
 const Nav = () => {
   return (
@@ -11,7 +10,6 @@ const Nav = () => {
       <Header />
       <TopicButtons />
       <ViewArticles />
-      {/* <ViewComments /> */}
     </>
   );
 };

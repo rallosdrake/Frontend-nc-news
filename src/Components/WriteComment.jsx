@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 const WriteComment = ({ setComments }) => {
   const [comment, setComment] = useState({});
   const { article_id } = useParams();
-  const [err, setErr] = useState(null);
+  const [setErr] = useState(null);
   const submitHandler = (e) => {
     e.preventDefault();
     setComment("comment posted");
