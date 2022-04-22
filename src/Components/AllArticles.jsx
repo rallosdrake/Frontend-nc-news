@@ -60,9 +60,9 @@ const AllArticles = () => {
             sortHandler(e);
           }}
         >
-          <option value="author">Author</option>
           <option value="votes">Votes</option>
           <option value="comment_count">Comment count</option>
+          <option value="author">Author</option>
         </select>
         <label htmlFor="order"></label>
         <select
