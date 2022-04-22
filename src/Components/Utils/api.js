@@ -41,6 +41,7 @@ export const getComments = (article_id) => {
 
 export const postComment = async (article_id, username, body) => {
   const { data } = await articlesApi.post(`/articles/${article_id}/comments`, {
+    _limit: 10,
     username: username,
     body: body,
   });
