@@ -1,6 +1,7 @@
 import { getComments } from "./Utils/api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import WriteComment from "./WriteComment";
 
 export const DisplayComments = () => {
   const [comments, setComments] = useState([]);
@@ -19,6 +20,7 @@ export const DisplayComments = () => {
   if (err) return <p>{err}</p>;
   return (
     <>
+      <WriteComment setComments={setComments} />
       <h3>Comments</h3>
       <ul>
         {comments.map((comment) => {

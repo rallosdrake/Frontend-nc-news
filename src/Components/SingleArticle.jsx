@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { increaseVotes } from "./Utils/api";
 import DisplayComments from "./DisplayComments";
 import { Link } from "react-router-dom";
-import { WriteComment } from "./WriteComment";
+import WriteComment from "./WriteComment";
+
 export const SingleArticle = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
@@ -92,7 +93,7 @@ export const SingleArticle = () => {
       >
         💔
       </button>
-      <WriteComment />
+
       <DisplayComments />
     </div>
   );

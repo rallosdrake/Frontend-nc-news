@@ -39,14 +39,11 @@ export const getComments = (article_id) => {
     });
 };
 
-export const postComment = (article_id, username, comment) => {
-  return articlesApi
-    .post(`/articles/${article_id}/comments`, {
-      username: username,
-      body: comment,
-    })
-    .then(({ data }) => {
-      console.log(data, "this is data");
-      return data;
-    });
+export const postComment = async (article_id, username, body) => {
+  const { data } = await articlesApi.post(`/articles/${article_id}/comments`, {
+    username: username,
+    body: body,
+  });
+  console.log(data, "this is result");
+  return data.comment;
 };
