@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import { getArticlesFromApi } from "./Utils/api";
 import { Link } from "react-router-dom";
 import { SingleArticle } from "../Components/SingleArticle";
+import { useParams } from "react-router-dom";
 const AllArticles = () => {
   const [page, setPage] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState([]);
   const [err, setErr] = useState(null);
-
+  let { topic_slug } = useParams();
+  console.log(topic_slug, "topic slug");
   useEffect(() => {
-    getArticlesFromApi(page)
+    getArticlesFromApi(page, topic_slug)
       .then((articlesApi) => {
         setArticles(articlesApi);
         setIsLoading(false);
