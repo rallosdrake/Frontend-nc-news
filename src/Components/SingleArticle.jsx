@@ -10,7 +10,6 @@ export const SingleArticle = () => {
   const [article, setArticle] = useState({});
   const [err, setErr] = useState(null);
   const [votes, setVotes] = useState(article.votes);
-  const [clicked,  "m is not a functionsetClicked] = useState(false);
 
   useEffect(() => {
     if (!article_id) return;
@@ -29,7 +28,6 @@ export const SingleArticle = () => {
     setArticle((currArticle) => {
       return { ...currArticle, votes: currArticle.votes + 1 };
     });
-    setClicked(true);
     setErr(null);
     increaseVotes(article_id, increment)
       .then((res) => {
@@ -40,7 +38,6 @@ export const SingleArticle = () => {
           return { ...currArticle, votes: currArticle.votes - 1 };
         });
         setErr("Something went wrong, please try again.");
-        setClicked(false);
         return <p> {err.response}</p>;
       });
   };
@@ -49,7 +46,6 @@ export const SingleArticle = () => {
     setArticle((currArticle) => {
       return { ...currArticle, votes: currArticle.votes - 1 };
     });
-    setClicked(true);
     setErr(null);
     increaseVotes(article_id, increment)
       .then((res) => {
@@ -60,7 +56,6 @@ export const SingleArticle = () => {
           return { ...currArticle, votes: currArticle.votes + 1 };
         });
         setErr("Something went wrong, please try again.");
-        setClicked(false);
         return <p> {err.response}</p>;
       });
   };
