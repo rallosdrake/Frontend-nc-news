@@ -10,7 +10,7 @@ export const SingleArticle = () => {
   const [article, setArticle] = useState({});
   const [err, setErr] = useState(null);
   const [votes, setVotes] = useState(article.votes);
-  const [setClicked] = useState(false);
+  const [clicked,  "m is not a functionsetClicked] = useState(false);
 
   useEffect(() => {
     if (!article_id) return;
